@@ -1,17 +1,14 @@
 {
   "name": "@au661750/analytics-web",
   "licens": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
-  "publishConfig": {
-    "@au661750:registry": "https://gitlab.com/api/v4/projects/13172/packages/npm/"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.au.dk:au661750/analytics-web.git"
+    "url": "https://github.com/Luyenvu6969/AnalyticsWeb.git"
   },
   "keywords": [
     "typescript"
