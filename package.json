@@ -1,15 +1,26 @@
 {
-  "name": "analytics-web",
-  "version": "1.0.0",
-  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "name": "@au661750/analytics-web",
+  "licens": "MIT",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "gitlab.au.dk/au661750/analytics-web"
+    "url": "https://github.com/Luyenvu6969/AnalyticsWeb.git"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Luyen Nhu Vu",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.5.1"
+  },
+  "description": ""
 }
