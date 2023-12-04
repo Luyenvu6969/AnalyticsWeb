@@ -1,10 +1,13 @@
 {
-  "name": "@au661750/analytics-web",
+  "name": "analytics-web",
+  "private": false,
   "licens": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "axios": "^1.5.1"
