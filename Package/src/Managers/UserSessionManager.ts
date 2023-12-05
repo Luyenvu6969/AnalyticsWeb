@@ -5,7 +5,6 @@ export class UserSessionManager {
 
 
 	constructor() {
-		// Record the time when the user enters the page
 		this.recordPageEnterTime();
 	}
 
@@ -21,3 +20,5 @@ export class UserSessionManager {
 		return 0;
 	}
 }
+
+export default UserSessionManager;

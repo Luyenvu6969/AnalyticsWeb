@@ -1,5 +1,3 @@
-import { AnalyticsWebOptions } from "../Models/AnalyticsWebOptions";
-
 export class BrowserManager {
 	private browserMap = {
 		Chrome: "Google Chrome",
@@ -24,5 +22,6 @@ export class BrowserManager {
 	public isMobileDevice(): boolean {
 		return /Mobi|Android/i.test(navigator.userAgent);
 	}
-
 }
+
+export default BrowserManager;

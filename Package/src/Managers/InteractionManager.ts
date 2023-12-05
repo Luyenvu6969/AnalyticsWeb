@@ -1,4 +1,5 @@
 import { AnalyticsWebOptions } from "../Models/AnalyticsWebOptions";
+import UserInteraction from "../Models/UserInteraction";
 import Logger from "../util/Logger";
 import Validator from "../util/Validator";
 
@@ -43,3 +44,4 @@ export class InteractionManager {
 	}
 }
 
+export default InteractionManager;

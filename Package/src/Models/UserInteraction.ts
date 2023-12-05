@@ -1,4 +1,4 @@
-interface UserInteraction {
+export interface UserInteraction {
 	label: string; // Type of interaction
 	product: string; // Unique name for the product
 	customer: string; // Unique name for the customer
@@ -6,3 +6,5 @@ interface UserInteraction {
 	timestamp: Date; // Timestamp of the interaction
 	customTags: Record<string, string>; // Custom tags for additional context
 }
+
+export default UserInteraction;

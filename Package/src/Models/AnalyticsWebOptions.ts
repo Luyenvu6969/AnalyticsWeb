@@ -1,7 +1,7 @@
-interface AnalyticsWebOptions {
+export interface AnalyticsWebOptions {
 	address: string;
 	product: string;
 	customer: string;
 }
 
-export { AnalyticsWebOptions };
+export default AnalyticsWebOptions;

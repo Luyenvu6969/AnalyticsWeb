@@ -4,14 +4,21 @@ import { InteractionManager } from "./Managers/InteractionManager";
 import Logger from "./util/Logger";
 import { BrowserManager } from "./Managers/BrowserManager";
 import { UserSessionManager } from "./Managers/UserSessionManager";
+import UserInteraction from "./Models/UserInteraction";
+import BrowserData from "./Models/BrowserData";
+import UserSessionData from "./Models/UserSessionData";
 
-class AnalyticsWebClient {
+export class AnalyticsWebClient {
 	private interactionManager: InteractionManager;
 	private userSessionManager: UserSessionManager;
 	private browserManager: BrowserManager;
 
 	private options: AnalyticsWebOptions;
 	private sendInteractionsTimerId: number | undefined;
+
+	private userInteractionEndpoint = "/api/collection/userInteraction";
+	private userSessionEndpoint = "/api/collection/userSession";
+	private browserDataEndpoint = "/api/collection/browserData";
 
 	constructor(options: AnalyticsWebOptions) {
 		this.options = options;
@@ -21,7 +28,6 @@ class AnalyticsWebClient {
 		this.browserManager = new BrowserManager();
 		this.userSessionManager = new UserSessionManager();
 
-		// Add an event listener to record page exit time
 		window.addEventListener('beforeunload', () => {
 			this.sendUserSessionData({
 				product: this.options.product,
@@ -30,7 +36,7 @@ class AnalyticsWebClient {
 				timeSpent: this.userSessionManager.recordPageExitTime(),
 			});
 		});
-		
+
 		this.sendBrowserData({
 			product: this.options.product,
 			customer: this.options.customer,
@@ -77,7 +83,7 @@ class AnalyticsWebClient {
 
 	private async sendUserInteractionData(data: UserInteraction): Promise<void> {
 		try {
-			const response: AxiosResponse = await axios.post(this.options.address, data); // TODO: Add endpoint address
+			const response: AxiosResponse = await axios.post(this.options.address + this.userInteractionEndpoint, data);
 
 			if (response.status !== 200) {
 				Logger.warn('Failed to send data. Status code: ' + response.status);
@@ -94,7 +100,7 @@ class AnalyticsWebClient {
 
 	private async sendUserSessionData(data: UserSessionData): Promise<void> {
 		try {
-			const response: AxiosResponse = await axios.post(this.options.address, data); // TODO: Add endpoint address
+			const response: AxiosResponse = await axios.post(this.options.address + this.userSessionEndpoint, data);
 
 			if (response.status !== 200) {
 				Logger.warn('Failed to send data. Status code: ' + response.status);
@@ -111,7 +117,7 @@ class AnalyticsWebClient {
 
 	private async sendBrowserData(data: BrowserData): Promise<void> {
 		try {
-			const response: AxiosResponse = await axios.post(this.options.address, data); // TODO: Add endpoint address
+			const response: AxiosResponse = await axios.post(this.options.address + this.browserDataEndpoint, data);
 
 			if (response.status !== 200) {
 				Logger.warn('Failed to send data. Status code: ' + response.status);
@@ -127,4 +133,4 @@ class AnalyticsWebClient {
 	}
 }
 
-export { AnalyticsWebClient };
+export default AnalyticsWebClient;

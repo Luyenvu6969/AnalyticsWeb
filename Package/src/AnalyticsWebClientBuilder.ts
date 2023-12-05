@@ -1,7 +1,7 @@
 import { AnalyticsWebClient } from "./AnalyticsWebClient";
 import { AnalyticsWebOptions } from "./Models/AnalyticsWebOptions";
 
-class AnalyticsWebClientBuilder {
+export class AnalyticsWebClientBuilder {
 	private options: AnalyticsWebOptions = {
 		address: '',
 		product: '',
@@ -12,7 +12,6 @@ class AnalyticsWebClientBuilder {
 
 	withBackendAddress(address: string): this {
 		this.options.address = address;
-		// TODO: Add health checks
 		return this;
 	}
 
@@ -31,4 +30,4 @@ class AnalyticsWebClientBuilder {
 	}
 }
 
-export { AnalyticsWebClientBuilder };
+export default AnalyticsWebClientBuilder;
