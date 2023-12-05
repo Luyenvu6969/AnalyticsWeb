@@ -1,3 +1,7 @@
+export interface UserInteractionData {
+	userInteractionList: UserInteraction[];
+}
+
 export interface UserInteraction {
 	label: string; // Type of interaction
 	product: string; // Unique name for the product

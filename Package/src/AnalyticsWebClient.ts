@@ -29,21 +29,32 @@ export class AnalyticsWebClient {
 		this.userSessionManager = new UserSessionManager();
 
 		window.addEventListener('beforeunload', () => {
-			this.sendUserSessionData({
-				product: this.options.product,
-				customer: this.options.customer,
-				timestamp: new Date(),
-				timeSpent: this.userSessionManager.recordPageExitTime(),
-			});
+			const sessionData: UserSessionData = {
+				userSessionList: [
+					{
+						product: this.options.product,
+						customer: this.options.customer,
+						timestamp: new Date(),
+						timeSpent: this.userSessionManager.recordPageExitTime(),
+					}],
+			};
+
+			this.sendUserSessionData(sessionData);
 		});
 
-		this.sendBrowserData({
-			product: this.options.product,
-			customer: this.options.customer,
-			timestamp: new Date(),
-			browser: this.browserManager.getBrowserName(),
-			isMobileDevice: this.browserManager.isMobileDevice(),
-		});
+		const browserData: BrowserData = {
+			browserDataList: [
+				{
+					product: this.options.product,
+					customer: this.options.customer,
+					timestamp: new Date(),
+					browser: this.browserManager.getBrowserName(),
+					isMobileDevice: this.browserManager.isMobileDevice(),
+				},
+			],
+		};
+
+		this.sendBrowserData(browserData);
 	}
 
 	destroy(): void {
