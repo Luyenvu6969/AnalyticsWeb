@@ -1,29 +1,41 @@
 {
-  "name": "analytics-web",
-  "private": false,
-  "licens": "MIT",
-  "version": "1.0.3",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Luyenvu6969/AnalyticsWeb.git"
-  },
-  "keywords": [
-    "typescript"
-  ],
-  "author": "Luyen Nhu Vu",
-  "license": "ISC",
-  "devDependencies": {
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
-  },
-  "dependencies": {
-    "axios": "^1.5.1"
-  },
-  "description": ""
+	"name": "analytics-web",
+	"private": false,
+	"license": "MIT",
+	"version": "1.0.5",
+	"main": "index.js",
+	"module": "dist/esm/index.js",
+	"umd:main": "dist/umd/index.js",
+	"types": "dist/types/index.d.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:types",
+		"build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
+		"build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
+		"build:umd": "node tools/cleanup umd && webpack --config config/webpack.config.js",
+		"build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Luyenvu6969/AnalyticsWeb.git"
+	},
+	"keywords": [
+		"typescript"
+	],
+	"files": [
+		"dist"
+	],
+	"author": "Luyen Nhu Vu",
+	"devDependencies": {
+		"ts-node": "^10.9.1",
+		"ts-loader": "^9.2.5",
+		"typescript": "^5.3.2",
+		"webpack": "^5.52.1",
+		"webpack-cli": "^4.8.0"
+	},
+	"dependencies": {
+		"axios": "^1.5.1"
+	},
+	"description": ""
 }
